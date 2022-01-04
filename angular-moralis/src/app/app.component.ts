@@ -11,7 +11,7 @@ Moralis.start({ serverUrl: environment.server_url, appId: environment.app_id });
 })
 export class AppComponent {
 
-  public title = 'Angular + Moralis Login';
+  public title = '### BTC Indonesia ###';
   public user: string;
   public isLoggedIn = false;
   public createdAt: string;
@@ -20,7 +20,7 @@ export class AppComponent {
   public isAuthenticated = false;
 
 
-  // Login 
+  // Login
   async login() {
     this.user = await Moralis.User.current();
     if (!this.user) {
@@ -42,7 +42,11 @@ export class AppComponent {
 
   }
 
-
-
+  async donasi() {
+    // sending 0.5 ETH
+    const options = { type: "native", amount: Moralis.Units.ETH("0.5"), receiver: "0xa56D47733bdcBDf73f16c10951E91F1cb6dfe648" }
+    let result = await Moralis.transfer(options)
+    return result;
+  }
 
 }
